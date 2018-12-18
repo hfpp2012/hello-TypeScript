@@ -1,13 +1,5 @@
-// let myArr: number[] = [1, 2, 3];
+// tuple
 
-let myArr: Array<boolean> = [false, false, true];
+let my_tuple: [string, number];
 
-// myArr = [];
-myArr.push(false)
-let a = myArr.pop();
-console.log(a);
-
-let my_name: string = "rails365";
-
-let other_name = my_name;
-console.log(other_name)
+my_tuple = ["rails365", 100];
