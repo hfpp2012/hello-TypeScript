@@ -1,14 +1,9 @@
-// if (true) {
-//     let i = 0;
-// }
-// let i = 0;
-// console.log(i);
-// for(let i = 0; i <= 10; i++) {
-//     console.log(i);
-// }
-// console.log(i);
-// 定义类型和赋值
+// let myArr: number[] = [1, 2, 3];
+var myArr = [false, false, true];
+// myArr = [];
+myArr.push(false);
+var a = myArr.pop();
+console.log(a);
 var my_name = "rails365";
-console.log("my name is" + my_name);
-my_name = "1111";
-console.log("my name is " + my_name);
+var other_name = my_name;
+console.log(other_name);
