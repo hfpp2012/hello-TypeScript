@@ -1,5 +1,10 @@
-// tuple
+// function add(a: number, b: number) {
+// 	return a + b;
+// }
 
-let my_tuple: [string, number];
+const add = (a: number, b: number) => {
+	return a + b;
+}
 
-my_tuple = ["rails365", 100];
+let sum = add(10, 20);
+console.log(sum);
