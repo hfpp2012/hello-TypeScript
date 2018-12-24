@@ -14,17 +14,17 @@
 // 		console.log(a);
 // 	}
 // }
-var add = function (a, b) {
-    if (b === void 0) { b = 10; }
-    if (b) {
-        console.log(a + b);
+var add = function (a) {
+    var num = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        num[_i - 1] = arguments[_i];
     }
-    else {
-        console.log(a);
-    }
+    return num.reduce(function (total, num) {
+        return total + num;
+    }, a);
 };
 // let sum = add(10, 20);
 // console.log(sum.toFixed(2));
 // console.log(sum.substr(0, 3));
-var sum = add(20, 20);
+var sum = add(20, 20, 30, 40);
 console.log(sum);
