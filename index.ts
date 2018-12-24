@@ -1,32 +1,24 @@
-// function add(a: number, b: number) {
-// 	return a + b;
-// }
+let a: any;
 
-// const add = (a: number, b: number): number => {
-// 	return a + b;
-// }
+a = 10;
+a = "hfpp2012";
+a = [1, 2, 3];
 
-// const add = (a: number, b: number = 10): void => {
-// 	console.log(a + b)
-// }
+const log = (value: any) => {
+	console.log(typeof value);
+	if (typeof value === 'number') {
+		return `your number is ${value}`;
+	}
 
-// const add = (a: number, b?: number): void => {
-// 	if (b) {
-// 		console.log(a + b);
-// 	} else {
-// 		console.log(a);
-// 	}
-// }
+	if (typeof value === "string") {
+		return `your name is ${value}`;
+	}
 
-const add = (a: number, ...num: number[]): number => {
-	return num.reduce(function(total, num) {
-		return total + num
-	}, a);
+	throw new Error(`Expected string or number, got ${value}.`);
 }
 
-// let sum = add(10, 20);
-// console.log(sum.toFixed(2));
-// console.log(sum.substr(0, 3));
+console.log(log(10));
 
-let sum = add(20, 20, 30, 40);
-console.log(sum);
+let b: any[];
+
+b = [1, 2, "2012", [1, 2]];
