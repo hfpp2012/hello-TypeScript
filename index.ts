@@ -1,36 +1,26 @@
-function isNumber(value: any): value is number {
-	// 可以进行进一步处理
-	return typeof value === "number";
+// 模板
+class Person {
+	// 定义了两个数据内容
+	firstName: string;
+	lastName: string;
 }
 
-function isString(value: any): value is string {
-	return typeof value === "string"
+// 生成一个对象
+let aPerson = new Person();
+
+// 设置 firstName 的内容
+aPerson.firstName = "rails365";
+// 读取 firstName 的内容
+console.log(aPerson.firstName);
+
+class Movie {
+	name: string;
+	play_count: number;
+	created_at: string;
+	time: string;
 }
 
-// const log = (value: any) => {
-// 	console.log(typeof value);
-// 	if (isNumber(value)) {
-// 		return `your number is ${value}`;
-// 	}
+let m = new Movie();
 
-// 	if (isString(value)) {
-// 		return `your name is ${value}`;
-// 	}
-
-// 	throw new Error(`Expected string or number, got ${value}.`);
-// }
-
-const log = (value: string | number | null | undefined) => {
-	console.log(typeof value);
-	if (isNumber(value)) {
-		return `your number is ${value}`;
-	}
-
-	if (isString(value)) {
-		return `your name is ${value}`;
-	}
-
-	// throw new Error(`Expected string or number, got ${value}.`);
-}
-
-console.log(log(null));
+m.name = "诱人的 TypeScript 视频教程 #11 函数 - Rest Parameters"
+console.log(m.name);
