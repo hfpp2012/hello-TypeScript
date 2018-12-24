@@ -1,17 +1,28 @@
-var a;
-a = 10;
-a = "hfpp2012";
-a = [1, 2, 3];
+function isNumber(value) {
+    // 可以进行进一步处理
+    return typeof value === "number";
+}
+function isString(value) {
+    return typeof value === "string";
+}
+// const log = (value: any) => {
+// 	console.log(typeof value);
+// 	if (isNumber(value)) {
+// 		return `your number is ${value}`;
+// 	}
+// 	if (isString(value)) {
+// 		return `your name is ${value}`;
+// 	}
+// 	throw new Error(`Expected string or number, got ${value}.`);
+// }
 var log = function (value) {
     console.log(typeof value);
-    if (typeof value === 'number') {
+    if (isNumber(value)) {
         return "your number is " + value;
     }
-    if (typeof value === "string") {
+    if (isString(value)) {
         return "your name is " + value;
     }
-    throw new Error("Expected string or number, got " + value + ".");
+    // throw new Error(`Expected string or number, got ${value}.`);
 };
-console.log(log(10));
-var b;
-b = [1, 2, "2012", [1, 2]];
+console.log(log(null));
