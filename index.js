@@ -13,10 +13,23 @@ var __extends = (this && this.__extends) || (function () {
 })();
 // 模板
 var Person = /** @class */ (function () {
+    // static all() {
+    // 	// Person 对应数据库的一个表模型
+    // 	// 可以列出 persons 表的所有记录
+    // 	// new 出来的可能是一条记录，要找到所有记录，可能要通过静态方法
+    // 	return Person.select().all();
+    // }
     function Person(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    // 静态的方法
+    Person.getStaticAge = function () {
+        return "my age is " + Person.age;
+    };
+    Person.prototype.getAge = function () {
+        return "my age is " + Person.age;
+    };
     Person.prototype.greet = function () {
         console.log('hi');
     };
@@ -47,9 +60,15 @@ var Person = /** @class */ (function () {
         this.greet();
         console.log('*****');
     };
+    // 静态属性
+    Person.age = 10;
     return Person;
 }());
-var aPerson = new Person("rails365", "hfpp2012");
+// public 的 getStaticAge
+// console.log(Person.getStaticAge());
+// console.log(Person.getStaticAge());
+// let aPerson = new Person("rails365", "hfpp2012");
+// console.log(aPerson.getAge())
 // 相当于 set 方法
 // aPerson.firstName = "rails365"
 // 相当于 get 方法
@@ -72,13 +91,16 @@ var Programmer = /** @class */ (function (_super) {
     Programmer.prototype.greet = function () {
         console.log('hello world');
     };
+    Programmer.getSuperAge = function () {
+        return "super age is " + Programmer.age;
+    };
     // super 代表父类
     Programmer.prototype.greetLikeNormalPeople = function () {
         _super.prototype.greet.call(this);
     };
     // 子类定义的方法
     // public getFullName(): string {
-    // 	return `${this.firstName} ${this.lastName}`;
+    //  return `${this.firstName} ${this.lastName}`;
     // }
     // 自己定义的方法
     // getFirstName protected
@@ -91,14 +113,16 @@ var Programmer = /** @class */ (function (_super) {
     // 可以访问继承过来的 private 属性
     // getFirstName 和 getLastName 是继承过来
     // public getFullName(): string {
-    // 	return `${this.getFirstName()} ${this.getLastName()}`;
+    //  return `${this.getFirstName()} ${this.getLastName()}`;
     // }
     Programmer.prototype.getFullName = function () {
         return this.getSuperFirstName() + " " + this.getSuperLastName();
     };
     return Programmer;
 }(Person));
-var aProgrammer = new Programmer("rails365", "hfpp2012");
+// getSuperAge 是子类定义的方法
+console.log(Programmer.getSuperAge());
+// let aProgrammer = new Programmer("rails365", "hfpp2012");
 // console.log(aProgrammer.firstName);
 // 继承过来的方法
 // aProgrammer.getFirstName();
