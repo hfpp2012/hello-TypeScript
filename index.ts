@@ -4,9 +4,9 @@ class Person {
 	protected firstName: string;
 	protected lastName: string;
 
-	constructor() {
-		this.firstName = "rails365";
-		this.lastName = "hfpp2012";
+	protected constructor(firstName: string, lastName: string) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public greet() {
@@ -24,7 +24,7 @@ class Person {
 
 	// public
 	// get 方法
-	private getFirstName() {
+	protected getFirstName() {
 		return this.firstName;
 	}
 
@@ -48,7 +48,7 @@ class Person {
 	}
 }
 
-// let aPerson = new Person();
+let aPerson = new Person("rails365", "hfpp2012");
 // 相当于 set 方法
 // aPerson.firstName = "rails365"
 // 相当于 get 方法
@@ -64,6 +64,12 @@ class Person {
 class Programmer extends Person {
 	public greet() {
 		console.log('hello world');
+	}
+
+	constructor(firstName: string, lastName: string) {
+		// 调用父类的构造函数的方法，要传入参数
+		super(firstName, lastName);
+		console.log("Programmer constructor");
 	}
 
 	// super 代表父类
@@ -97,11 +103,11 @@ class Programmer extends Person {
 	}
 }
 
-let aProgrammer = new Programmer();
+let aProgrammer = new Programmer("rails365", "hfpp2012");
 // console.log(aProgrammer.firstName);
 // 继承过来的方法
 // aProgrammer.getFirstName();
 // console.log(aProgrammer.getFullName());
 // console.log(aProgrammer.getFirstName());
 
-console.log(aProgrammer.getSuperFirstName());
+// console.log(aProgrammer.getSuperFirstName());

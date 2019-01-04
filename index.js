@@ -13,9 +13,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 // 模板
 var Person = /** @class */ (function () {
-    function Person() {
-        this.firstName = "rails365";
-        this.lastName = "hfpp2012";
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
     Person.prototype.greet = function () {
         console.log('hi');
@@ -49,7 +49,7 @@ var Person = /** @class */ (function () {
     };
     return Person;
 }());
-// let aPerson = new Person();
+var aPerson = new Person("rails365", "hfpp2012");
 // 相当于 set 方法
 // aPerson.firstName = "rails365"
 // 相当于 get 方法
@@ -62,8 +62,12 @@ var Person = /** @class */ (function () {
 // 它的父类就是 Person
 var Programmer = /** @class */ (function (_super) {
     __extends(Programmer, _super);
-    function Programmer() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Programmer(firstName, lastName) {
+        var _this = 
+        // 调用父类的构造函数的方法，要传入参数
+        _super.call(this, firstName, lastName) || this;
+        console.log("Programmer constructor");
+        return _this;
     }
     Programmer.prototype.greet = function () {
         console.log('hello world');
@@ -94,10 +98,10 @@ var Programmer = /** @class */ (function (_super) {
     };
     return Programmer;
 }(Person));
-var aProgrammer = new Programmer();
+var aProgrammer = new Programmer("rails365", "hfpp2012");
 // console.log(aProgrammer.firstName);
 // 继承过来的方法
 // aProgrammer.getFirstName();
 // console.log(aProgrammer.getFullName());
 // console.log(aProgrammer.getFirstName());
-console.log(aProgrammer.getSuperFirstName());
+// console.log(aProgrammer.getSuperFirstName());
