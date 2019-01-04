@@ -1,6 +1,21 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // 模板
 var Person = /** @class */ (function () {
     function Person() {
+        this.firstName = "rails365";
+        this.lastName = "hfpp2012";
     }
     Person.prototype.greet = function () {
         console.log('hi');
@@ -15,12 +30,18 @@ var Person = /** @class */ (function () {
     // public
     // get 方法
     Person.prototype.getFirstName = function () {
-        console.log(this.firstName);
+        return this.firstName;
+    };
+    Person.prototype.getLastName = function () {
+        return this.lastName;
     };
     // public
     // set 方法
     Person.prototype.setFirstName = function (firstName) {
         this.firstName = firstName;
+    };
+    Person.prototype.setLastName = function (lastName) {
+        this.lastName = lastName;
     };
     Person.prototype.othergreet = function () {
         this.greet();
@@ -28,38 +49,55 @@ var Person = /** @class */ (function () {
     };
     return Person;
 }());
-var aPerson = new Person();
+// let aPerson = new Person();
 // 相当于 set 方法
 // aPerson.firstName = "rails365"
 // 相当于 get 方法
 // console.log(aPerson.firstName);
-aPerson.setFirstName("hfpp2012");
-aPerson.getFirstName();
+// aPerson.setFirstName("hfpp2012");
+// aPerson.getFirstName();
 // aPerson.sayHi();
-aPerson.callSayHi();
+// aPerson.callSayHi();
 // 继承成了父类的数据和行为，就是属性和方法
 // 它的父类就是 Person
-// class Programmer extends Person {
-// 	public greet() {
-// 		console.log('hello world');
-// 	}
-// 	// super 代表父类
-// 	public greetLikeNormalPeople() {
-// 		super.greet();
-// 	}
-// }
-// let aProgrammer: Person = new Programmer();
-// let aProgrammer: Programmer = new Person();
-// 调用方法时，先找自己本身对象的方法，如果没有，会找父类的
-// aProgrammer.greet();
-// aProgrammer.greetLikeNormalPeople();
-// aProgrammer.othergreet();
-// aProgrammer.firstName = "rails365";
+var Programmer = /** @class */ (function (_super) {
+    __extends(Programmer, _super);
+    function Programmer() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Programmer.prototype.greet = function () {
+        console.log('hello world');
+    };
+    // super 代表父类
+    Programmer.prototype.greetLikeNormalPeople = function () {
+        _super.prototype.greet.call(this);
+    };
+    // 子类定义的方法
+    // public getFullName(): string {
+    // 	return `${this.firstName} ${this.lastName}`;
+    // }
+    // 自己定义的方法
+    // getFirstName protected
+    Programmer.prototype.getSuperFirstName = function () {
+        return this.getFirstName();
+    };
+    Programmer.prototype.getSuperLastName = function () {
+        return this.lastName;
+    };
+    // 可以访问继承过来的 private 属性
+    // getFirstName 和 getLastName 是继承过来
+    // public getFullName(): string {
+    // 	return `${this.getFirstName()} ${this.getLastName()}`;
+    // }
+    Programmer.prototype.getFullName = function () {
+        return this.getSuperFirstName() + " " + this.getSuperLastName();
+    };
+    return Programmer;
+}(Person));
+var aProgrammer = new Programmer();
 // console.log(aProgrammer.firstName);
-// 生成一个对象
-// let aPerson = new Person();
-// 设置 firstName 的内容
-// aPerson.firstName = "rails365";
-// aPerson.othergreet();
-// 读取 firstName 的内容
-// console.log(aPerson.firstName);
+// 继承过来的方法
+// aProgrammer.getFirstName();
+// console.log(aProgrammer.getFullName());
+// console.log(aProgrammer.getFirstName());
+console.log(aProgrammer.getSuperFirstName());

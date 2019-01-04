@@ -1,14 +1,19 @@
 // 模板
 class Person {
 	// 定义了两个数据内容
-	private firstName: string;
-	private lastName: string;
+	protected firstName: string;
+	protected lastName: string;
+
+	constructor() {
+		this.firstName = "rails365";
+		this.lastName = "hfpp2012";
+	}
 
 	public greet() {
 		console.log('hi');
 	}
 
-	private sayHi() {
+	protected sayHi() {
 		console.log('private say hi');
 	}
 
@@ -19,8 +24,12 @@ class Person {
 
 	// public
 	// get 方法
-	getFirstName() {
-		console.log(this.firstName);
+	private getFirstName() {
+		return this.firstName;
+	}
+
+	getLastName() {
+		return this.lastName;
 	}
 
 	// public
@@ -29,52 +38,70 @@ class Person {
 		this.firstName = firstName;
 	}
 
+	setLastName(lastName) {
+		this.lastName = lastName;
+	}
+
 	public othergreet() {
 		this.greet();
 		console.log('*****');
 	}
 }
 
-let aPerson = new Person();
+// let aPerson = new Person();
 // 相当于 set 方法
 // aPerson.firstName = "rails365"
 // 相当于 get 方法
 // console.log(aPerson.firstName);
-aPerson.setFirstName("hfpp2012");
-aPerson.getFirstName();
+// aPerson.setFirstName("hfpp2012");
+// aPerson.getFirstName();
 
 // aPerson.sayHi();
-aPerson.callSayHi();
+// aPerson.callSayHi();
 
 // 继承成了父类的数据和行为，就是属性和方法
 // 它的父类就是 Person
-// class Programmer extends Person {
-// 	public greet() {
-// 		console.log('hello world');
-// 	}
+class Programmer extends Person {
+	public greet() {
+		console.log('hello world');
+	}
 
-// 	// super 代表父类
-// 	public greetLikeNormalPeople() {
-// 		super.greet();
-// 	}
-// }
+	// super 代表父类
+	public greetLikeNormalPeople() {
+		super.greet();
+	}
 
-// let aProgrammer: Person = new Programmer();
-// let aProgrammer: Programmer = new Person();
-// 调用方法时，先找自己本身对象的方法，如果没有，会找父类的
-// aProgrammer.greet();
+	// 子类定义的方法
+	// public getFullName(): string {
+	// 	return `${this.firstName} ${this.lastName}`;
+	// }
 
-// aProgrammer.greetLikeNormalPeople();
+	// 自己定义的方法
+	// getFirstName protected
+	getSuperFirstName(): string {
+		return this.getFirstName();
+	}
 
-// aProgrammer.othergreet();
-// aProgrammer.firstName = "rails365";
+	getSuperLastName(): string {
+		return this.lastName;
+	}
+
+	// 可以访问继承过来的 private 属性
+	// getFirstName 和 getLastName 是继承过来
+	// public getFullName(): string {
+	// 	return `${this.getFirstName()} ${this.getLastName()}`;
+	// }
+
+	public getFullName(): string {
+		return `${this.getSuperFirstName()} ${this.getSuperLastName()}`;
+	}
+}
+
+let aProgrammer = new Programmer();
 // console.log(aProgrammer.firstName);
+// 继承过来的方法
+// aProgrammer.getFirstName();
+// console.log(aProgrammer.getFullName());
+// console.log(aProgrammer.getFirstName());
 
-// 生成一个对象
-// let aPerson = new Person();
-
-// 设置 firstName 的内容
-// aPerson.firstName = "rails365";
-// aPerson.othergreet();
-// 读取 firstName 的内容
-// console.log(aPerson.firstName);
+console.log(aProgrammer.getSuperFirstName());
