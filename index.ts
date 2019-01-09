@@ -4,6 +4,9 @@ class Person {
 	protected firstName: string;
 	protected lastName: string;
 
+	// 只读属性，不能修改
+	readonly name:string = 'rails365';
+
 	// 静态属性
 	protected static age: number = 10;
 
@@ -71,8 +74,9 @@ class Person {
 // console.log(Person.getStaticAge());
 // console.log(Person.getStaticAge());
 
-// let aPerson = new Person("rails365", "hfpp2012");
-// console.log(aPerson.getAge())
+let aPerson = new Person("rails365", "hfpp2012");
+console.log(aPerson.name);
+aPerson.name = '1111';
 // 相当于 set 方法
 // aPerson.firstName = "rails365"
 // 相当于 get 方法
@@ -85,54 +89,54 @@ class Person {
 
 // 继承成了父类的数据和行为，就是属性和方法
 // 它的父类就是 Person
-class Programmer extends Person {
-	public greet() {
-		console.log('hello world');
-	}
+// class Programmer extends Person {
+// 	public greet() {
+// 		console.log('hello world');
+// 	}
 
-	public static getSuperAge() {
-		return `super age is ${Programmer.age}`
-	}
+// 	public static getSuperAge() {
+// 		return `super age is ${Programmer.age}`
+// 	}
 
-	constructor(firstName: string, lastName: string) {
-			// 调用父类的构造函数的方法，要传入参数
-			super(firstName, lastName);
-			console.log("Programmer constructor");
-	}
+// 	constructor(firstName: string, lastName: string) {
+// 			// 调用父类的构造函数的方法，要传入参数
+// 			super(firstName, lastName);
+// 			console.log("Programmer constructor");
+// 	}
 
-	// super 代表父类
-	public greetLikeNormalPeople() {
-			super.greet();
-	}
+// 	// super 代表父类
+// 	public greetLikeNormalPeople() {
+// 			super.greet();
+// 	}
 
-	// 子类定义的方法
-	// public getFullName(): string {
-	//  return `${this.firstName} ${this.lastName}`;
-	// }
+// 	// 子类定义的方法
+// 	// public getFullName(): string {
+// 	//  return `${this.firstName} ${this.lastName}`;
+// 	// }
 
-	// 自己定义的方法
-	// getFirstName protected
-	getSuperFirstName(): string {
-			return this.getFirstName();
-	}
+// 	// 自己定义的方法
+// 	// getFirstName protected
+// 	getSuperFirstName(): string {
+// 			return this.getFirstName();
+// 	}
 
-	getSuperLastName(): string {
-			return this.lastName;
-	}
+// 	getSuperLastName(): string {
+// 			return this.lastName;
+// 	}
 
-	// 可以访问继承过来的 private 属性
-	// getFirstName 和 getLastName 是继承过来
-	// public getFullName(): string {
-	//  return `${this.getFirstName()} ${this.getLastName()}`;
-	// }
+// 	// 可以访问继承过来的 private 属性
+// 	// getFirstName 和 getLastName 是继承过来
+// 	// public getFullName(): string {
+// 	//  return `${this.getFirstName()} ${this.getLastName()}`;
+// 	// }
 
-	public getFullName(): string {
-			return `${this.getSuperFirstName()} ${this.getSuperLastName()}`;
-	}
-}
+// 	public getFullName(): string {
+// 			return `${this.getSuperFirstName()} ${this.getSuperLastName()}`;
+// 	}
+// }
 
 // getSuperAge 是子类定义的方法
-console.log(Programmer.getSuperAge());
+// console.log(Programmer.getSuperAge());
 
 // let aProgrammer = new Programmer("rails365", "hfpp2012");
 // console.log(aProgrammer.firstName);
