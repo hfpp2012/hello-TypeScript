@@ -1,5 +1,7 @@
 // 枚举类型
 // 它的值是数字序号，从 0 开始
+// 代码可读性强
+// 可能会常用于下拉框等应用
 var DaysOfTheWeek;
 (function (DaysOfTheWeek) {
     DaysOfTheWeek[DaysOfTheWeek["SUN"] = 100] = "SUN";
