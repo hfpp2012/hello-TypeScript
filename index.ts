@@ -1,53 +1,44 @@
-// 接口
-// 传过来的参数必须包含接口定义的属性和方法
-interface Named {
-	// 属性
-	name: string
+// type Name = [string, number];
 
-	// 方法
-	// 没有方法体
-	// 具体的对象中实现方法体
-	print(name: string): void;
+// 定义类型别名 type alias
+// 以后就可以用 Name 来代替 string 类型
+type Name = string;
+
+// let my_name: Name = ["rails365", 23];
+
+// let my_name:string = 'rails365';
+
+// 不能重复定义
+type User = {
+	name: string;
+	age: number;
+	print(): void;
 }
 
-// 函数
-// 只要传过来的参数 o 有 name 属性
-// o 可以是一个接口类型，这个接口类型要有 name 属性
-// 定义 o 为接口类型，可以传入一个对象
-const sayName = (o: Named) => {
-	// console.log(o.name);
-	o.print(o.name);
-}
-
-// 对象
-const person = {
-	age: 27,
-	name: "rails365",
-	print: (name) => {
-		console.log(name)
-	}
-}
-
-sayName(person);
-
-// const bottle = {
-// 	litres: 1,
-// 	name: "漂流瓶"
+// const user: User = {
+// 	name: "rails365",
+// 	age: 27
 // }
 
-class Person {
-	name: string
-
-	print(name: string): void {
-		console.log(name);
+const user: User = {
+	name: "rails365",
+	age: 27,
+	print: () => {
+		console.log('xxx');
 	}
 }
 
-let aPerson = new Person();
-aPerson.name = "rails365";
+interface IUser {
+	name: string;
+	age: number;
+}
 
-sayName(aPerson);
+interface IUser {
+	email: string
+}
 
-
-
-// sayName(bottle);
+const other_user: IUser = {
+	name: "rails365",
+	age: 27,
+	email: "hfpp2012@gmail.com"
+}
