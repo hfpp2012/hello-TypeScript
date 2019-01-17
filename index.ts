@@ -1,87 +1,35 @@
-// 接口
-// 支付接口
 interface Person {
-	name: string;
+	first_name: string
+	last_name?: string
 
-	greet(): void;
+	print?(): void
+
+	// 后面会讲
+	[propName: string]: any;
 }
+
+let person = {
+	first_name: "hfpp2012",
+	age: 27
+}
+
+class Programmer implements Person {
+	first_name: string;
+}
+
+const programmer = new Programmer();
+programmer.first_name = "tony";
 
 const sayName = (o: Person) => {
-	o.greet();
+	console.log(o.first_name);
 }
 
-// 实现接口，微信支付，支付宝支付
+sayName(programmer);
 
-// 类实现接口
-class Employee implements Person {
-	name: string;
+// sayName(person);
 
-	greet(): void {
-		console.log('I am employee');
-	}
-}
+// 类型断言
+sayName({ first_name: "hfpp2012", last_name: "rails365", age: 27 } as Person)
 
-class Customer implements Person {
-	public name: string;
-	public email: string;
-
-	greet(): void {
-		console.log('I am customer');
-	}
-}
-
-// let cu = new Customer();
-// cu.greet();
-
-// sayName(cu);
-
-// let em = new Employee();
-// em.greet();
-
-// sayName(em);
-
-let customer: Person = new Customer();
-customer.greet();
-
-let employee: Person = new Employee();
-employee.greet();
-
-// 支付接口
-
-interface Pay {
-	post(): void;
-}
-
-// 可能会发送 http 请求
-// 真正支付的请求
-const do_pay = (pay: Pay) => {
-	// 有一些逻辑
-	pay.post()
-}
-
-// 微信支付
-class WePay implements Pay {
-	// 调微信支付的接口
-	post() {
-
-	}
-}
-
-// 支付宝支付
-class AliPay implements Pay {
-	// 调支付宝支付的接口
-	post() {
-
-	}
-}
-
-// 其他的支付接口
-
-let we_pay: Pay = new WePay();
-let ali_pay: Pay = new AliPay();
-
-// 微信支付
-do_pay(we_pay);
-
-// 支付宝支付
-do_pay(ali_pay);
+//
+sayName({ first_name: "hfpp2012", lassst_name: "rails365", age: 27 })

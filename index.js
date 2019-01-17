@@ -1,31 +1,20 @@
-var sayName = function (o) {
-    o.greet();
+var person = {
+    first_name: "hfpp2012",
+    age: 27
 };
-// 实现接口，微信支付，支付宝支付
-// 类实现接口
-var Employee = /** @class */ (function () {
-    function Employee() {
+var Programmer = /** @class */ (function () {
+    function Programmer() {
     }
-    Employee.prototype.greet = function () {
-        console.log('I am employee');
-    };
-    return Employee;
+    return Programmer;
 }());
-var Customer = /** @class */ (function () {
-    function Customer() {
-    }
-    Customer.prototype.greet = function () {
-        console.log('I am customer');
-    };
-    return Customer;
-}());
-// let cu = new Customer();
-// cu.greet();
-// sayName(cu);
-// let em = new Employee();
-// em.greet();
-// sayName(em);
-var customer = new Customer();
-customer.greet();
-var employee = new Employee();
-employee.greet();
+var programmer = new Programmer();
+programmer.first_name = "tony";
+var sayName = function (o) {
+    console.log(o.first_name);
+};
+sayName(programmer);
+// sayName(person);
+// 类型断言
+sayName({ first_name: "hfpp2012", last_name: "rails365", age: 27 });
+//
+sayName({ first_name: "hfpp2012", lassst_name: "rails365", age: 27 });
