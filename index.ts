@@ -1,5 +1,6 @@
 interface Person {
-	first_name: string
+	// 只读，不可修改
+	readonly first_name: string
 	last_name?: string
 
 	print?(): void
@@ -8,28 +9,30 @@ interface Person {
 	[propName: string]: any;
 }
 
-let person = {
+let person: Person = {
 	first_name: "hfpp2012",
 	age: 27
 }
+
+person.first_name = "tony";
 
 class Programmer implements Person {
 	first_name: string;
 }
 
-const programmer = new Programmer();
+const programmer: Person = new Programmer();
 programmer.first_name = "tony";
 
-const sayName = (o: Person) => {
-	console.log(o.first_name);
-}
+// const sayName = (o: Person) => {
+// 	console.log(o.first_name);
+// }
 
-sayName(programmer);
+// sayName(programmer);
 
 // sayName(person);
 
 // 类型断言
-sayName({ first_name: "hfpp2012", last_name: "rails365", age: 27 } as Person)
+// sayName({ first_name: "hfpp2012", last_name: "rails365", age: 27 } as Person)
 
 //
-sayName({ first_name: "hfpp2012", lassst_name: "rails365", age: 27 })
+// sayName({ first_name: "hfpp2012", lassst_name: "rails365", age: 27 })
