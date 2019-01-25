@@ -1,17 +1,24 @@
+var printCallback;
+printCallback = function (suc) {
+    console.log("callback", suc);
+};
 var person = {
     first_name: "hfpp2012",
-    age: 27
-};
-person.first_name = "tony";
-var Programmer = /** @class */ (function () {
-    function Programmer() {
+    age: 27,
+    print: function (callback) {
+        console.log('hello');
+        callback(true);
     }
-    return Programmer;
-}());
-var programmer = new Programmer();
-programmer.first_name = "tony";
+};
+person.print(printCallback);
+// person.first_name = "tony";
+// class Programmer implements Person {
+// 	first_name: string;
+// }
+// const programmer: Person = new Programmer();
+// programmer.first_name = "tony";
 // const sayName = (o: Person) => {
-// 	console.log(o.first_name);
+//  console.log(o.first_name);
 // }
 // sayName(programmer);
 // sayName(person);
