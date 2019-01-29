@@ -1,34 +1,47 @@
-interface Person {
-	// 只读，不可修改
-	readonly first_name: string
-	last_name?: string
+// interface Person {
+// 	// 只读，不可修改
+// 	readonly first_name: string
+// 	last_name?: string
 
-	print(callback: PrintCallback): void
+// 	print(callback: PrintCallback): void
 
-	// 后面会讲
-	[propName: string]: any;
+// 	// 后面会讲
+// 	[propName: string]: any;
+// }
+
+// x 代表可以是任何类型，比如字符串 number 之类的
+let x: any = "hi there";
+// x 可以是任何类型，编译器可能不能明确知道 x 是哪种类型
+// <string> 表示把 x 断言成字符串类型，就是告诉编译器要把 x 当成字符串，这样
+// 就可以调用 substring 函数，因为字符串才有这个函数
+let s = (<string>x).substring(0, 3);
+console.log(typeof s);
+
+// 编译器可能不知道明确的类型，因为可以是两者之一
+function getLength(something: string | number): number {
+	return something.length
 }
 
-interface PrintCallback {
-	// 可以简单理解为匿名函数
-	(success: boolean): void
-}
+// interface PrintCallback {
+// 	// 可以简单理解为匿名函数
+// 	(success: boolean): void
+// }
 
-let printCallback: PrintCallback;
-printCallback = (suc: boolean): void => {
-	console.log("callback", suc);
-}
+// let printCallback: PrintCallback;
+// printCallback = (suc: boolean): void => {
+// 	console.log("callback", suc);
+// }
 
-let person: Person = {
-	first_name: "hfpp2012",
-	age: 27,
-	print: (callback: PrintCallback): void => {
-		console.log('hello');
-		callback(true);
-	}
-}
+// let person: Person = {
+// 	first_name: "hfpp2012",
+// 	age: 27,
+// 	print: (callback: PrintCallback): void => {
+// 		console.log('hello');
+// 		callback(true);
+// 	}
+// }
 
-person.print(printCallback);
+// person.print(printCallback);
 
 // person.first_name = "tony";
 
