@@ -19,8 +19,42 @@ console.log(typeof s);
 
 // 编译器可能不知道明确的类型，因为可以是两者之一
 function getLength(something: string | number): number {
-	return something.length
+	if ((<string>something).length) {
+		return (<string>something).length;
+	} else {
+		return something.toString().length;
+	}
+	// return something.length
 }
+
+// 会报错
+// function toBoolean(something: string | number): boolean {
+// 	return <boolean>something;
+// }
+
+interface Person {
+	name: string;
+	age: number;
+}
+
+// 另一种类型断言的方式 as
+// 更好的明确类型和类型里面的结构
+let person = {} as Person;
+person.name = "rails365";
+person.age = 27;
+
+// 一种写法
+// react <div></div>
+let person1 = <Person>{
+	name: "rails365",
+	age: 27
+}
+
+let person: Person = {
+	name: "rails365",
+	age: 27
+}
+
 
 // interface PrintCallback {
 // 	// 可以简单理解为匿名函数

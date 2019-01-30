@@ -13,9 +13,25 @@ var x = "hi there";
 // 就可以调用 substring 函数，因为字符串才有这个函数
 var s = x.substring(0, 3);
 console.log(typeof s);
+// 编译器可能不知道明确的类型，因为可以是两者之一
 function getLength(something) {
-    return something.length;
+    if (something.length) {
+        return something.length;
+    }
+    else {
+        return something.toString().length;
+    }
+    // return something.length
 }
+// 另一种类型断言的方式 as
+var person = {};
+person.name = "rails365";
+person.age = 27;
+// 一种写法
+var person1 = {
+    name: "rails365",
+    age: 27
+};
 // interface PrintCallback {
 // 	// 可以简单理解为匿名函数
 // 	(success: boolean): void
