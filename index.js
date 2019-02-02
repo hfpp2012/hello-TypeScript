@@ -1,18 +1,37 @@
-var p = {
-    age: 27,
-    name: "rails365"
-};
-// 类不能继承多个类，也就是说不能有多个父类
-// 但可以实现多个接口
-// 每个接口的属性和方法都要实现
-var P = /** @class */ (function () {
-    function P() {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Component = /** @class */ (function () {
+    function Component(width, height) {
+        this.width = width;
+        this.height = height;
     }
-    return P;
+    Component.prototype.display = function () {
+        console.log(this.height);
+    };
+    return Component;
 }());
-var p1 = {
-    name: "rails365",
-    age: 25
-};
-var p2 = p1;
-var p3 = p1;
+var Button = /** @class */ (function (_super) {
+    __extends(Button, _super);
+    function Button() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Button.prototype.hide = function () {
+        console.log('hiding');
+    };
+    return Button;
+}(Component));
+var w = new Button(1, 2);
+console.log(w);
+w.display();
+w.hide();
