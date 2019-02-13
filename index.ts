@@ -1,31 +1,22 @@
-class Component {
-	private width: number;
-	private height: number;
-
-	constructor(width: number, height: number) {
-		this.width = width;
-		this.height = height;
-	}
-
-	display(): void {
-		console.log(this.height);
-	}
+interface States {
+	[index: string]: boolean;
 }
 
-// 接口继承类
-// 继承类的方法和属性，但可以不用实现方法
-// 也可以定义自己的方法和属性
-interface Widget extends Component {
-	hide(): void;
+let s: States = { 'enabled': true, 'maximized': false }
+console.log(s);
+console.log(s["enabled"]);
+
+interface States1 {
+	// An index signature parameter type must be 'string' or 'number'.
+	[index: number]: number;
 }
 
-class Button extends Component implements Widget {
-	hide(): void {
-		console.log('hiding');
-	}
-}
+let s1: States1 = [12, 34, 45, 1];
+console.log(s1);
+console.log(s1[0]);
 
-let w: Widget = new Button(1, 2);
-console.log(w);
-w.display();
-w.hide();
+let s2: number[] = [1, 2, 3];
+
+// let x = {a: 1, b: 2};
+// x['a'] // 1
+// x['b'] // 2
