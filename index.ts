@@ -1,41 +1,36 @@
-interface Todo {
-	userId: number;
-	id: number;
-	title: string;
-	completed: boolean;
-}
+// 不能实例化
+abstract class Person {
+	abstract name: string;
 
-class Todo1 {
-	userId: number;
-	id: number;
-	title: string;
-	completed: boolean;
-}
+	// constructor(name: string) {
+	// 	this.name = name;
+	// }
 
-let todo: Todo = {
-	"userId": 1,
-	"id": 1,
-	"title": "delectus aut autem",
-	"completed": false
-}
-
-let todos: Todo1[] = [
-	{
-		"userId": 1,
-		"id": 1,
-		"title": "delectus aut autem",
-		"completed": false
-	},
-	{
-		"userId": 1,
-		"id": 2,
-		"title": "quis ut nam facilis et officia qui",
-		"completed": false
-	},
-	{
-		"userId": 1,
-		"id": 3,
-		"title": "fugiat veniam minus",
-		"completed": false
+	display(): void {
+		console.log(this.name);
 	}
-]
+
+	// 抽象的方法
+	// 没有方法体
+	abstract find(string): Person;
+}
+
+class Employee extends Person {
+	name: string;
+	empCode: number;
+
+	constructor(name: string, code: number) {
+		super(); // 必须调用 super
+		this.name = name;
+		this.empCode = code;
+	}
+
+	// 必须实现抽象的方法
+	find(name: string): Person {
+		return new Employee(name, 1);
+	}
+}
+
+let p: Person = new Employee('hfpp2012', 1111);
+let p1: Person = p.find("rails365");
+console.log(p1);
