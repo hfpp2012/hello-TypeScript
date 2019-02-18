@@ -1,23 +1,48 @@
-class Rectangle {
-	private w: number;
-	private h: number;
+// 1
 
-	constructor(w: number, h: number) {
-		this.w = w;
-		this.h = h;
-	}
+let a: any;
 
-	getAreaFunction() {
-		return (): number => {
-			return this.w * this.h;
-		}
+a = function(): void {
+	console.log('It work');
+}
+
+function fun(): any {
+	return function(): void {
+		console.log('It work');
 	}
 }
 
-let rectangle: Rectangle = new Rectangle(2, 5);
-// 返回 function
-let areaFunction = rectangle.getAreaFunction();
-// 得到面积
-// this 是指向 rectangle 这个对象，还是调用的上下文
-let area = areaFunction();
-console.log(area);
+// 2
+
+let c: Function;
+
+c = function(): void {
+	console.log('It work');
+}
+
+// c = "xxx"
+
+
+// 3
+
+let d: (para: string) => string;
+
+d = function(pass: string): string {
+	return pass;
+}
+
+// 4
+
+type e = (para: string) => string;
+
+const f:e = function(pass: string): string {
+	return pass;
+}
+
+// 5
+
+interface g {
+	(para: string): string;
+}
+
+const h:g = (pass: string) => pass;
