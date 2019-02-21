@@ -1,57 +1,52 @@
-// 函数名相同，参数不同
-// 没有实现的定义
-function sum(x: number, y: number): number;
-function sum(x: number, y: number, z: number): number
-
-// 上面两种定义的组合实现
-function sum(x: number, y: number, z?: number): number {
-	if (typeof z === 'undefined') {
-		return x + y;
-	} else {
-		return x + y + z;
-	}
-}
-
-// let n = sum(1, 2, 3);
-// console.log(n);
-
-// n = sum(1, 2);
-// console.log(n);
-
-function divide(x: number, y: number): number;
-function divide(str: string, y: number): string[];
-
-function divide(x: any, y: number): any {
+function show(x: number | string): void {
+	console.log(typeof x);
 	if (typeof x === 'number') {
-		return x / y;
-	} else if (typeof x === 'string') {
-		return [x.substring(0, y), x.substring(y)]
+		console.log("a number " + x);
+	} else {
+		console.log("a string " + x);
 	}
 }
 
-let n: number = divide(6, 2);
-console.log(n);
+// show("test string");
+// show(4);
 
-let s: string[] = divide("football", 3);
-console.log(s);
+class Person {}
 
-// 静态方法和实例方法
-class Util {
-	static divide(x: number, y: number): number;
-	static divide(str: string, y: number): string[];
+let person = new Person();
+// console.log(typeof person);
+// console.log(typeof new String("test"));
+// console.log(typeof undefined);
+// console.log(typeof null);
 
-	static divide(x: any, y: number): any {
-		if (typeof x === 'number') {
-			return x / y;
-		} else if (typeof x === 'string') {
-			return [x.substring(0, y), x.substring(y)]
-		}
+class Car {
+	start() {
+		console.log('car starting');
+	}
+
+	drive() {
+		console.log('car driving');
 	}
 }
 
-// let a: Util = new Util();
-// console.log(a.divide(6, 2));
-// console.log(a.divide('hello world', 4));
+class Bike {
+	start() {
+		console.log('bike starting');
+	}
 
-let c: number = Util.divide(6, 2);
-console.log(c);
+	ride() {
+		console.log('bike ridding');
+	}
+}
+
+function move(vehicle: Bike | Car): void {
+	vehicle.start();
+	console.log(vehicle.drive);
+	// vehicle.drive !== undefined
+	if(vehicle.drive) {
+		vehicle.drive();
+	} else {
+		vehicle.ride();
+	}
+}
+
+move(new Car());
