@@ -1,25 +1,13 @@
-// 1
-var a;
-a = function () {
-    console.log('It work');
-};
-function fun() {
-    return function () {
-        console.log('It work');
-    };
+// 上面两种定义的组合实现
+function sum(x, y, z) {
+    if (typeof z === 'undefined') {
+        return x + y;
+    }
+    else {
+        return x + y + z;
+    }
 }
-// 2
-var c;
-c = function () {
-    console.log('It work');
-};
-// c = "xxx"
-// 3
-var d;
-d = function (pass) {
-    return pass;
-};
-var f = function (pass) {
-    return pass;
-};
-var h = function (pass) { return pass; };
+var n = sum(1, 2, 3);
+console.log(n);
+n = sum(1, 2);
+console.log(n);

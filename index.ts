@@ -1,48 +1,19 @@
-// 1
+// 函数名相同，参数不同
+// 没有实现的定义
+function sum(x: number, y: number): number;
+function sum(x: number, y: number, z: number): number
 
-let a: any;
-
-a = function(): void {
-	console.log('It work');
-}
-
-function fun(): any {
-	return function(): void {
-		console.log('It work');
+// 上面两种定义的组合实现
+function sum(x: number, y: number, z?: number): number {
+	if (typeof z === 'undefined') {
+		return x + y;
+	} else {
+		return x + y + z;
 	}
 }
 
-// 2
+let n = sum(1, 2, 3);
+console.log(n);
 
-let c: Function;
-
-c = function(): void {
-	console.log('It work');
-}
-
-// c = "xxx"
-
-
-// 3
-
-let d: (para: string) => string;
-
-d = function(pass: string): string {
-	return pass;
-}
-
-// 4
-
-type e = (para: string) => string;
-
-const f:e = function(pass: string): string {
-	return pass;
-}
-
-// 5
-
-interface g {
-	(para: string): string;
-}
-
-const h:g = (pass: string) => pass;
+n = sum(1, 2);
+console.log(n);
