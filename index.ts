@@ -1,3 +1,4 @@
+// typeof
 function show(x: number | string): void {
 	console.log(typeof x);
 	if (typeof x === 'number') {
@@ -18,6 +19,8 @@ let person = new Person();
 // console.log(typeof undefined);
 // console.log(typeof null);
 
+
+// 属性
 class Car {
 	start() {
 		console.log('car starting');
@@ -38,11 +41,30 @@ class Bike {
 	}
 }
 
+
+// boolean 返回值发挥的作用是在运行时
+// vehicle is Car 发挥在编译时期
+function isCar(vehicle: Bike | Car): vehicle is Car {
+	return (vehicle as Car).drive !== undefined;
+}
+
 function move(vehicle: Bike | Car): void {
 	vehicle.start();
-	console.log(vehicle.drive);
+	// console.log(vehicle.drive);
 	// vehicle.drive !== undefined
-	if(vehicle.drive) {
+	// if((vehicle as Car).drive) {
+	// 	(vehicle as Car).drive();
+	// } else {
+	// 	(vehicle as Bike).ride();
+	// }
+
+	// if(isCar(vehicle)) {
+	// 	vehicle.drive();
+	// } else {
+	// 	vehicle.ride();
+	// }
+
+	if(vehicle instanceof Car) {
 		vehicle.drive();
 	} else {
 		vehicle.ride();
@@ -50,3 +72,4 @@ function move(vehicle: Bike | Car): void {
 }
 
 move(new Car());
+
