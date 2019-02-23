@@ -1,18 +1,14 @@
-function show(x) {
-    if (x === undefined) {
-        console.log("value not set");
-    }
-    else if (x === null) {
-        console.log("value is null");
-    }
-    else {
-        console.log(x);
-    }
+//  tsc index.ts 非空检查
+//  tsc index.ts --strictNullChecks 严格的空检查
+function splitInHalf(str) {
+    var checkString = function () {
+        if (str === null || str === undefined) {
+            str = "test";
+        }
+    };
+    checkString();
+    // 告诉编译器 str 不能为空
+    return str.substring(0, str.length / 2);
 }
-var x = 10;
-// undefined
-var y;
-var z = null;
-show(x);
-show(y);
-show(z);
+var s = splitInHalf("hello");
+console.log(s);
