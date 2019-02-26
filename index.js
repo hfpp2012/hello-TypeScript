@@ -1,14 +1,13 @@
-//  tsc index.ts 非空检查
-//  tsc index.ts --strictNullChecks 严格的空检查
-function splitInHalf(str) {
-    var checkString = function () {
-        if (str === null || str === undefined) {
-            str = "test";
-        }
-    };
-    checkString();
-    // 告诉编译器 str 不能为空
-    return str.substring(0, str.length / 2);
+function sayHi() {
+    console.log('Hi');
 }
-var s = splitInHalf("hello");
-console.log(s);
+var a = sayHi();
+console.log(a);
+function loopForever() {
+    // 无限循环
+    while (true) {
+    }
+}
+function terminateWithError($msg) {
+    throw new Error($msg);
+}
