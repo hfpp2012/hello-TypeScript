@@ -1,31 +1,15 @@
-// 打印机 A
-var PrinterA = /** @class */ (function () {
-    function PrinterA() {
-    }
-    // 风景画
-    PrinterA.prototype.printLandscape = function () {
-        console.log("printing in landscape");
-    };
-    return PrinterA;
-}());
-// 打印机 B
-var PrinterB = /** @class */ (function () {
-    function PrinterB() {
-    }
-    // 肖像画
-    PrinterB.prototype.printPortrait = function () {
-        console.log("printing in portrait");
-    };
-    return PrinterB;
-}());
-function doPrint(pt) {
-    if (pt.pageOrientation === "landscape") {
-        pt.printLandscape();
-    }
-    else if (pt.pageOrientation === "portrait") {
-        pt.printLandscape();
-    }
-    else {
-        var unknownPrinter = pt;
-    }
+function getArray(items) {
+    return new Array().concat(items);
 }
+var myNumArray = getArray([100, 200, 300]);
+var myStrArray = getArray(["hello", "world"]);
+console.log(myNumArray);
+console.log(myStrArray);
+myNumArray.push(400);
+myStrArray.push("rails365");
+console.log(myNumArray);
+console.log(myStrArray);
+myNumArray.push("hfpp2012");
+myStrArray.push(500);
+console.log(myNumArray);
+console.log(myStrArray);
