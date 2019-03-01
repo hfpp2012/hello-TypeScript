@@ -1,34 +1,31 @@
-function sayHi() {
-    console.log('Hi');
-}
-var a = sayHi();
-console.log(a);
-function loopForever() {
-    // 无限循环
-    while (true) {
+// 打印机 A
+var PrinterA = /** @class */ (function () {
+    function PrinterA() {
     }
-}
-function terminateWithError($msg) {
-    throw new Error($msg);
-}
-function checkExhaustiveness(x) {
-    throw new Error("类型出错: " + x);
-}
-function showTrueFalse(x) {
-    if (typeof x === 'string') {
-        console.log("string: " + x);
+    // 风景画
+    PrinterA.prototype.printLandscape = function () {
+        console.log("printing in landscape");
+    };
+    return PrinterA;
+}());
+// 打印机 B
+var PrinterB = /** @class */ (function () {
+    function PrinterB() {
     }
-    else if (typeof x === 'boolean') {
-        console.log("boolean " + x);
+    // 肖像画
+    PrinterB.prototype.printPortrait = function () {
+        console.log("printing in portrait");
+    };
+    return PrinterB;
+}());
+function doPrint(pt) {
+    if (pt.pageOrientation === "landscape") {
+        pt.printLandscape();
+    }
+    else if (pt.pageOrientation === "portrait") {
+        pt.printLandscape();
     }
     else {
-        // 传入别的类型，不是 string 或 boolean，编译器会处理
-        // x 可能是一个不可到达的类型，可以分配给 never
-        // 当传入错误的类型的时候，可以分配 给 never 类型
-        checkExhaustiveness(x);
+        var unknownPrinter = pt;
     }
 }
-var something = null;
-var nothing = 12;
-showTrueFalse(true);
-showTrueFalse("false");

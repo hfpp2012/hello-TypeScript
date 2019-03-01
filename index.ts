@@ -1,52 +1,112 @@
-function sayHi(): void {
-	console.log('Hi');
+// 打印机 A
+class PrinterA {
+	// name: string
+	// type => 字符串，标识类型
+	pageOrientation: "landscape";
+
+	// 风景画
+	printLandscape(): void {
+		console.log("printing in landscape");
+	}
+
+	// type(): string {
+	// 	return "landscape";
+	// }
 }
 
-let a: void = sayHi();
-console.log(a);
-
-function loopForever(): never {
-	// 无限循环
-	while (true) {
-
+// 打印机 B
+class PrinterB {
+	pageOrientation: "portrait"
+	// 肖像画
+	printPortrait(): void {
+		console.log("printing in portrait");
 	}
 }
 
-function terminateWithError($msg: string): never {
-	throw new Error($msg);
-}
-
-function checkExhaustiveness(x: never): never {
-	throw new Error("类型出错: " + x);
-}
-
-function showTrueFalse(x: string | boolean): void {
-	if (typeof x === 'string') {
-		console.log("string: " + x);
-	} 
-
-	// else if (typeof x === 'boolean') {
-	// 	console.log("boolean " + x);
-	// } 
-
-	// 当传入一个 boolean 类型，编译器就会处理下面的代码
-	// 就会把 boolean 类型的值赋值给 never 类型，就会报错
-	// 可以简单理解为 boolean 是可以到达的类型
-	else {
-		// 传入别的类型，不是 string 或 boolean，编译器会处理
-		// x 可能是一个不可到达的类型，可以分配给 never
-		// 当传入错误的类型的时候，可以分配 给 never 类型
-		checkExhaustiveness(x);
-
-		// x 可能是 boolean 类型
-		// let temp: never = x;
+function doPrint(pt: PrinterA | PrinterB): void {
+	if (pt.pageOrientation === "landscape") {
+		pt.printLandscape();
+	} else if (pt.pageOrientation === "portrait") {
+		pt.printPortrait();
+	} else {
+		let unknownPrinter: never = pt;
 	}
 }
 
-// never 是很多类型的子类型
-// 不能把 number string 等类型或值分配给 never
-// let something: void = null;
-// let nothing: never = 12;
 
-showTrueFalse(true);
-showTrueFalse("false");
+// 接口
+interface FullTimeEmployee {
+	empType: "FullType";
+	name: string;
+	annualSalary: number;
+}
+
+interface PartTimeEmployee {
+	empType: "PartTime";
+	name: string;
+	monthlySalary: number;
+}
+
+interface ContractEmployee {
+	empType: "Contractor";
+	name: string;
+	hourlySalary: number;
+}
+
+//using type alias
+type Employee = FullTimeEmployee | PartTimeEmployee | ContractEmployee;
+
+function getEmployeeSalary(emp: Employee): number {
+	switch (emp.empType) {
+			case "FullType":
+					return emp.annualSalary;
+			case "PartTime":
+					return emp.monthlySalary;
+			case "Contractor":
+					return emp.hourlySalary;
+			default:
+					let temp: never = emp;
+					return temp;
+	}
+}
+
+let contractor: ContractEmployee = {empType: "Contractor", name: "Tina", hourlySalary: 34};
+let sal = getEmployeeSalary(contractor);
+console.log(sal);
+
+
+// enum
+
+enum ShapeType {TRIANGLE, RECTANGLE }
+
+interface RightAngledTriangle {
+    shapeType: ShapeType.TRIANGLE;
+    base: number;
+    height: number;
+    hypotenuse: number;
+}
+
+interface Square {
+    shapeType: ShapeType.RECTANGLE;
+    length: number;
+    width: number;
+}
+
+
+type Shape = RightAngledTriangle | Square;
+
+function getArea(shape: Shape): number {
+    switch (shape.shapeType) {
+        case ShapeType.TRIANGLE:
+            return (shape.base * shape.height) / 2;
+        case ShapeType.RECTANGLE:
+            return shape.length * shape.width;
+        default:
+            let temp: never = shape;
+            return temp;
+    }
+}
+
+let shape: Square = {shapeType: ShapeType.RECTANGLE, length: 5, width: 5};
+let area = getArea(shape);
+console.log(area);
