@@ -1,32 +1,28 @@
-var A = /** @class */ (function () {
-    function A() {
-        this.x = 5;
-    }
-    return A;
-}());
-var y;
-y = 'x';
-var Test = /** @class */ (function () {
-    function Test() {
-        this.x = 6;
-    }
-    return Test;
-}());
-function getProp(a, test) {
-    return test[a];
+function drawShapes(shapes) {
+    shapes.forEach(function (shape) { return shape.draw(); });
 }
-var t = new Test();
-var prop = getProp('x', t);
-console.log(prop);
-var B = /** @class */ (function () {
-    function B() {
+var Circle = /** @class */ (function () {
+    function Circle() {
     }
-    B.prototype.getAProp = function (a) {
-        return a[this.y];
+    Circle.prototype.draw = function () {
+        console.log("drawing Circle");
     };
-    return B;
+    return Circle;
 }());
-var b = new B();
-b.y = 'x';
-var prop1 = b.getAProp(new A());
-console.log(prop1);
+var Rectangle = /** @class */ (function () {
+    function Rectangle() {
+    }
+    Rectangle.prototype.draw = function () {
+        console.log('drawing Rectangle');
+    };
+    return Rectangle;
+}());
+var circle = new Circle();
+var rectangle = new Rectangle();
+drawShapes([circle, rectangle]);
+// K keyof T, extends
+function getProp(key, obj) {
+    return obj[key];
+}
+var obj = { a: 2, b: 3, c: 4 };
+var prop = getProp('c', obj);

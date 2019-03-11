@@ -1,31 +1,31 @@
-class A {
-	x: number = 5;
+interface Shape {
+	draw(): void;
 }
 
-let y: keyof A;
-y = 'x';
-
-class Test {
-	x: number = 6;
+function drawShapes<S extends Shape>(shapes: S[]): void {
+	shapes.forEach(shape => shape.draw())
 }
 
-function getProp(a: keyof Test, test: Test): any {
-	return test[a];
-}
-
-let t: Test = new Test();
-let prop = getProp('x', t);
-console.log(prop);
-
-class B {
-	y: keyof A;
-
-	getAProp(a: A): any {
-		return a[this.y];
+class Circle implements Shape {
+	draw(): void {
+		console.log("drawing Circle")
 	}
 }
 
-let b: B = new B();
-b.y = 'x';
-let prop1 = b.getAProp(new A());
-console.log(prop1);
+class Rectangle implements Shape {
+	draw(): void {
+		console.log('drawing Rectangle')
+	}
+}
+
+let circle = new Circle();
+let rectangle = new Rectangle();
+drawShapes([circle, rectangle]);
+
+// K keyof T, extends
+function getProp<T, K extends keyof T>(key: K, obj: T): any {
+	return obj[key];
+}
+
+let obj = { a: 2, b: 3, c: 4 };
+let prop = getProp('c', obj);
