@@ -1,47 +1,35 @@
-function createInstance<T>(t: new () => T): T {
-	return new t();
+type ListType<T> = { elements: T[] };
+
+let numList: ListType<number> = { elements: [1, 2, 3] };
+console.log(numList);
+
+interface Item {
+	name: string;
+	price: number;
 }
 
-class Test {
-	x: number = 4;
-	// constructor(x: number) {
+type Entity<E> = { id: number } & E;
+let itemEntity: Entity<Item> = { id: 1, name: "rails365", price: 12 };
+console.log(itemEntity);
 
-	// }
+interface Person {
+	name: string;
 }
 
-// let test: Test = new Test();
-let test: Test = createInstance<Test>(Test);
-console.log(test);
-
-function createInstance2<T>(t: new(...constructorArgs: any[]) => T, ...args: any[]): T {
-	return new t(args);
+interface Contact {
+	phone: string;
 }
 
-class Test2 {
-	private x: number;
-
-  constructor(x: number) {
-	  this.x = x;
-  }
+function showPersonContact(personContact: Person & Contact): void {
+	console.log(personContact)
 }
 
-function createInstance3<R, T extends { new(...constructorArgs: any[]): R }>(constructor: T, ...args: any[]): R {
-	return new constructor(args);
+let personContact: Person & Contact = { name: "Dane", phone: "111-111-111" };
+showPersonContact(personContact);
+
+interface PersonDetail {
+	detail: Person & Contact;
 }
 
-class Test3 {
-	private x: number;
-
-	constructor(x: number) {
-		this.x = x;
-	}
-
-}
-
-let test3: Test3 = createInstance3(Test3, 6);
-console.log(test3);
-
-// new Test2(3);
-
-let test2: Test2 = createInstance2(Test2, 3, 5);
-console.log(test2);
+let personDetail: PersonDetail = { detail: { name: "Dane", phone: "111-111-111" } };
+console.log(personDetail);
