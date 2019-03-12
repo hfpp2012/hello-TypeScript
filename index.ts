@@ -1,31 +1,31 @@
-interface Shape {
-	draw(): void;
+function createInstance<T>(t: new () => T): T {
+	return new t();
 }
 
-function drawShapes<S extends Shape>(shapes: S[]): void {
-	shapes.forEach(shape => shape.draw())
+class Test {
+	x: number = 4;
+	// constructor(x: number) {
+
+	// }
 }
 
-class Circle implements Shape {
-	draw(): void {
-		console.log("drawing Circle")
-	}
+// let test: Test = new Test();
+let test: Test = createInstance<Test>(Test);
+console.log(test);
+
+function createInstance2<T>(t: new(...constructorArgs: any[]) => T, ...args: any[]): T {
+	return new t(args);
 }
 
-class Rectangle implements Shape {
-	draw(): void {
-		console.log('drawing Rectangle')
-	}
+class Test2 {
+	private x: number;
+
+  constructor(x: number) {
+	  this.x = x;
+  }
 }
 
-let circle = new Circle();
-let rectangle = new Rectangle();
-drawShapes([circle, rectangle]);
+// new Test2(3);
 
-// K keyof T, extends
-function getProp<T, K extends keyof T>(key: K, obj: T): any {
-	return obj[key];
-}
-
-let obj = { a: 2, b: 3, c: 4 };
-let prop = getProp('c', obj);
+let test2: Test2 = createInstance2(Test2, 3, 5);
+console.log(test2);

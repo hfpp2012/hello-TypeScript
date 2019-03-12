@@ -1,28 +1,30 @@
-function drawShapes(shapes) {
-    shapes.forEach(function (shape) { return shape.draw(); });
+function createInstance(t) {
+    return new t();
 }
-var Circle = /** @class */ (function () {
-    function Circle() {
+var Test = /** @class */ (function () {
+    function Test() {
+        this.x = 4;
+        // constructor(x: number) {
+        // }
     }
-    Circle.prototype.draw = function () {
-        console.log("drawing Circle");
-    };
-    return Circle;
+    return Test;
 }());
-var Rectangle = /** @class */ (function () {
-    function Rectangle() {
+// let test: Test = new Test();
+var test = createInstance(Test);
+console.log(test);
+function createInstance2(t) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
     }
-    Rectangle.prototype.draw = function () {
-        console.log('drawing Rectangle');
-    };
-    return Rectangle;
-}());
-var circle = new Circle();
-var rectangle = new Rectangle();
-drawShapes([circle, rectangle]);
-// K keyof T, extends
-function getProp(key, obj) {
-    return obj[key];
+    return new t(args);
 }
-var obj = { a: 2, b: 3, c: 4 };
-var prop = getProp('c', obj);
+var Test2 = /** @class */ (function () {
+    function Test2(x) {
+        this.x = x;
+    }
+    return Test2;
+}());
+// new Test2(3);
+var test2 = createInstance2(Test2, 3, 5);
+console.log(test2);
