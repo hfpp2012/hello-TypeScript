@@ -1,15 +1,11 @@
-// function drawShapes(shape: Shape): Shape {
-// 	shape.draw();
-// 	return shape;
-// }
-function drawShapes(shape) {
-    shape.draw();
-    return shape;
-}
+"use strict";
+exports.__esModule = true;
+// import { Shape, drawShapes } from './classes';
+var c = require("./classes");
 var a = {
     draw: function () { }
 };
-drawShapes(a);
+c.drawShapes(a);
 var Circle = /** @class */ (function () {
     function Circle() {
     }
@@ -28,4 +24,4 @@ var Rectangle = /** @class */ (function () {
 }());
 var circle = new Circle();
 var rectangle = new Rectangle();
-var c = drawShapes(circle);
+var d = c.drawShapes(circle);

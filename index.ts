@@ -1,16 +1,6 @@
-interface Shape {
-	draw(): void;
-}
-
-// function drawShapes(shape: Shape): Shape {
-// 	shape.draw();
-// 	return shape;
-// }
-
-function drawShapes<T extends Shape>(shape: T): T {
-	shape.draw();
-	return shape;
-}
+// import * as c from './classes';
+// import { Shape, drawShapes } from './classes';
+import Shape, { drawShapes } from './classes';
 
 let a: Shape = {
 	draw: () => { }
