@@ -1,30 +1,31 @@
-function createInstance(t) {
-    return new t();
+// function drawShapes(shape: Shape): Shape {
+// 	shape.draw();
+// 	return shape;
+// }
+function drawShapes(shape) {
+    shape.draw();
+    return shape;
 }
-var Test = /** @class */ (function () {
-    function Test() {
-        this.x = 4;
-        // constructor(x: number) {
-        // }
+var a = {
+    draw: function () { }
+};
+drawShapes(a);
+var Circle = /** @class */ (function () {
+    function Circle() {
     }
-    return Test;
+    Circle.prototype.draw = function () {
+        console.log("drawing Circle");
+    };
+    return Circle;
 }());
-// let test: Test = new Test();
-var test = createInstance(Test);
-console.log(test);
-function createInstance2(t) {
-    var args = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
+var Rectangle = /** @class */ (function () {
+    function Rectangle() {
     }
-    return new t(args);
-}
-var Test2 = /** @class */ (function () {
-    function Test2(x) {
-        this.x = x;
-    }
-    return Test2;
+    Rectangle.prototype.draw = function () {
+        console.log('drawing Rectangle');
+    };
+    return Rectangle;
 }());
-// new Test2(3);
-var test2 = createInstance2(Test2, 3, 5);
-console.log(test2);
+var circle = new Circle();
+var rectangle = new Rectangle();
+var c = drawShapes(circle);

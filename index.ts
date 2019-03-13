@@ -1,35 +1,36 @@
-type ListType<T> = { elements: T[] };
-
-let numList: ListType<number> = { elements: [1, 2, 3] };
-console.log(numList);
-
-interface Item {
-	name: string;
-	price: number;
+interface Shape {
+	draw(): void;
 }
 
-type Entity<E> = { id: number } & E;
-let itemEntity: Entity<Item> = { id: 1, name: "rails365", price: 12 };
-console.log(itemEntity);
+// function drawShapes(shape: Shape): Shape {
+// 	shape.draw();
+// 	return shape;
+// }
 
-interface Person {
-	name: string;
+function drawShapes<T extends Shape>(shape: T): T {
+	shape.draw();
+	return shape;
 }
 
-interface Contact {
-	phone: string;
+let a: Shape = {
+	draw: () => { }
 }
 
-function showPersonContact(personContact: Person & Contact): void {
-	console.log(personContact)
+drawShapes(a);
+
+class Circle implements Shape {
+	draw(): void {
+		console.log("drawing Circle")
+	}
 }
 
-let personContact: Person & Contact = { name: "Dane", phone: "111-111-111" };
-showPersonContact(personContact);
-
-interface PersonDetail {
-	detail: Person & Contact;
+class Rectangle implements Shape {
+	draw(): void {
+		console.log('drawing Rectangle')
+	}
 }
 
-let personDetail: PersonDetail = { detail: { name: "Dane", phone: "111-111-111" } };
-console.log(personDetail);
+let circle = new Circle();
+let rectangle = new Rectangle();
+
+let c = drawShapes(circle);
