@@ -1,26 +1,7 @@
-// import * as c from './classes';
-// import { Shape, drawShapes } from './classes';
-import Shape, { drawShapes } from './classes';
-
-let a: Shape = {
-	draw: () => { }
+class Person {
+	firstName: string;
+	lastName: string;
 }
 
-drawShapes(a);
-
-class Circle implements Shape {
-	draw(): void {
-		console.log("drawing Circle")
-	}
-}
-
-class Rectangle implements Shape {
-	draw(): void {
-		console.log('drawing Rectangle')
-	}
-}
-
-let circle = new Circle();
-let rectangle = new Rectangle();
-
-let c = drawShapes(circle);
+let foo = new Person();
+foo.firstName = 11;
