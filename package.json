@@ -1,0 +1,22 @@
+{
+  "name": "hello-typescript",
+  "version": "1.0.0",
+  "description": "https://www.rails365.net/playlists/you-ren-de-typescript-shi-pin-jiao-cheng",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node out/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hfpp2012/hello-TypeScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hfpp2012/hello-TypeScript/issues"
+  },
+  "homepage": "https://github.com/hfpp2012/hello-TypeScript#readme",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
