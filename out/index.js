@@ -7,6 +7,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import sum from 'lodash-ts/sum';
 var _ = __importStar(require("lodash"));
 var Person = /** @class */ (function () {
     function Person() {
@@ -17,6 +18,6 @@ var foo = new Person();
 foo.firstName = "11";
 console.log(foo.firstName);
 var a = [1, 2, 3];
-_.reverse(a);
-console.log(a);
-_.reverse('xxx');
+var c = _.reverse(a);
+// let c = sum(a);
+console.log(c);

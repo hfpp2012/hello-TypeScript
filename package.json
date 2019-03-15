@@ -18,5 +18,8 @@
   "homepage": "https://github.com/hfpp2012/hello-TypeScript#readme",
   "dependencies": {
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.123"
   }
 }

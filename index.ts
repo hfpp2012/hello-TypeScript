@@ -1,3 +1,4 @@
+// import sum from 'lodash-ts/sum';
 import * as _ from 'lodash';
 
 class Person {
@@ -11,5 +12,6 @@ foo.firstName = "11";
 console.log(foo.firstName);
 
 let a = [1, 2, 3];
-_.reverse(a);
-console.log(a);
+let c = _.reverse(a)
+// let c = sum(a);
+console.log(c);
